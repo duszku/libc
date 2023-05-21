@@ -1,21 +1,30 @@
 AS=nasm
-FLAGS=-f elf64
+CC=gcc
+AFLAGS=-f elf64
+LFLAGS=-shared -z noexecstack
 
 SRC=src
-OUT=obj
+OBJ=obj
+OUT=lib
 
 SRCS=$(wildcard ${SRC}/*.s)
-OUTS=$(patsubst ${SRC}/%.s, ${OUT}/%.o, ${SRCS})
+OBJS=$(patsubst ${SRC}/%.s, ${OBJ}/%.o, ${SRCS})
 
-.PHONY: all
+.PHONY: all libso
 
-all: clean ${OUTS}
+all: clean ${OBJS} libso
 
-${OUT}/%.o: ${SRC}/%.s ${OUT}
-	${AS} ${FLAGS} -o $@ $<
+${OBJ}/%.o: ${SRC}/%.s ${OBJ}
+	${AS} ${AFLAGS} -o $@ $<
+
+libso: ${OBJS} ${OUT}
+	${CC} ${LFLAGS} -o ${OUT}/libc.so ${OBJS}
 
 clean:
-	rm -f ${OUT}/*
+	rm -f ${OBJ}/* ${OUT}/*
+
+${OBJ}:
+	mkdir ${OBJ}
 
 ${OUT}:
 	mkdir ${OUT}

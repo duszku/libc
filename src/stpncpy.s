@@ -1,5 +1,5 @@
         section .text
-        global  stpncpy
+        global  stpncpy:function
 
 ;-------------------------------------------------------------------------------
 ; Function: stpncpy

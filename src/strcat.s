@@ -11,4 +11,24 @@
 ;-------------------------------------------------------------------------------
 
 strcat:
+        mov     rax, rdi
+
+    ; end-seeking loop start
+    lopseek:
+        cmp     byte [rdi], 0
+        je      lopcpy
+        inc     rdi
+        jmp     lopseek
+
+    ; copying loop
+    lopcpy:
+        mov     bl, byte [rsi]
+        mov     [rdi], bl
+
+        inc     rsi
+        inc     rdi
+
+        cmp     bl, 0
+        jne     lopcpy
+
         ret

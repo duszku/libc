@@ -22,7 +22,6 @@ stpcpy:
         cmp     al, 0           ; check if last copied character was nul
         jne     lop             ; continue iff it was not
 
-    ; end loop
-    end:
+        ; end loop and return
         mov     rax, rdi
         ret

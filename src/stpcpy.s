@@ -24,4 +24,5 @@ stpcpy:
 
         ; end loop and return
         mov     rax, rdi
+        dec     rax
         ret

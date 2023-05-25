@@ -22,7 +22,7 @@ ${TESTDIR}/%: %.c ${TESTDIR}
 run: ${OUTS}
 	@echo
 	@echo "Running tests..."
-	@for f in ${OUTS} ; do LD_LIBRARY_PATH=../lib ./$$f ; done
+	@./run.sh
 
 clean:
 	rm -f ${TESTDIR}/*

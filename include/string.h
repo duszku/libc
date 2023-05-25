@@ -3,8 +3,9 @@
 
 #include <stddef.h>
 
-extern char     *stpcpy(char *, const char *);
-extern char     *stpncpy(char *, const char *, size_t);
-extern char     *strcat(char *, const char *);
+void     *memccpy(void *, const void *, int, size_t);
+char     *stpcpy(char *, const char *);
+char     *stpncpy(char *, const char *, size_t);
+char     *strcat(char *, const char *);
 
 #endif /* AMD64STRING_H */

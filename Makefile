@@ -18,7 +18,7 @@ ${OBJ}/%.o: ${SRC}/%.s ${OBJ}
 	${AS} ${AFLAGS} -o $@ $<
 
 libso: ${OBJS} ${OUT}
-	${CC} ${LFLAGS} -o ${OUT}/libc.so ${OBJS}
+	${CC} ${LFLAGS} -o ${OUT}/libmyc.so ${OBJS}
 
 clean:
 	rm -f ${OBJ}/* ${OUT}/*

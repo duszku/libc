@@ -1,8 +1,8 @@
 CC=gcc
 
-CFLAGS=-Wall -O0 -nostdlib -ffreestanding
+CFLAGS=-Wall -O0 #-nostdlib -ffreestanding
 LDFLAGS=-L../lib
-LIBS=-lc -lcriterion
+LIBS=-lmyc -lcriterion
 
 TESTDIR=bin
 

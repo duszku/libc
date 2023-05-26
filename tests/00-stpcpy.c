@@ -10,9 +10,8 @@ struct {
         .len  = { 7,        8,         9,          1  }
 };
 
-
 int
-main(void)
+returntest(void)
 {
         char    *ret;
         int      i;
@@ -22,6 +21,30 @@ main(void)
                 if (ret != cases.dest[i] + cases.len[i] - 1)
                         return 1;
         }
+
+        return 0;
+}
+
+int
+copytest(void)
+{
+        int      i, j;
+
+        for (i = 0; i < CASES_NO; ++i) {
+                for (j = 0; cases.dest[i][j] != '\0'; ++i) {
+                        if (cases.dest[i][j] != cases.src[i][j])
+                                return 1;
+                }
+        }
+
+        return 0;
+}
+
+int
+main(void)
+{
+        if (returntest() || copytest())
+                return 1;
 
         return 0;
 }

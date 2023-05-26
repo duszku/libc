@@ -1,7 +1,5 @@
 #include "../include/string.h"
 
-#include <stdio.h>
-
 #define CASES_NO 4
 struct {
         const char   src[CASES_NO][32];

@@ -12,4 +12,32 @@
 ;-------------------------------------------------------------------------------
 
 stpncpy:
+        mov     rax, rdi        ; move destination base to rax
+        add     rax, rdx        ; calculate top of the destination
+        dec     rax             ; obtain last accessible byte
+
+    ; start copying loop
+    cpylop:
+        mov     bl, byte [rsi]  ; take next byte
+        mov     [rdi], bl       ; copy to destination
+
+        inc     rdi             ; increment destination pointer
+        inc     rsi             ; increment source pointer
+
+        cmp     rdi, rax        ; check if last byte was reached
+        jg      end             ; return if yes
+
+        cmp     bl, 0           ; check if source ended
+        je      zerolop         ; start zeroing-out remaining bytes if yes
+        jmp     cpylop
+
+    ; start zeroing-out loop
+    zerolop:
+        mov     [rdi], byte 0   ; zero-out current byte
+        inc     rdi             ; increment destination pointer
+        cmp     rdi, rax        ; check if last byte was reached
+        jle     zerolop
+
+    ; return precalculated value in rax
+    end:
         ret

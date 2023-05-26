@@ -7,7 +7,7 @@ struct {
         const char   src[CASES_NO][32];
         char         dest[CASES_NO][32];
         int          len[CASES_NO];
-        int          fin[CASES_NO];
+        unsigned     fin[CASES_NO];
 } cases = {
         .src  = { "7chars", "8chars ", "9chars  ", "" },
         .len  = { 7,        8,         9,          1  },
